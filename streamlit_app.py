@@ -50,6 +50,5 @@ if ingredients_list:
 import requests
 smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
 st.text(smoothiefroot_response)
-    # Display the SQL statement (for debugging)
-    st.write(my_insert_stmt)
+ 
     st.stop()
