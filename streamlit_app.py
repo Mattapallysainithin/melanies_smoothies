@@ -26,8 +26,10 @@ ingredients_list = st.multiselect(
 # Process order
 if ingredients_list:
     ingredients_string = ', '.join(ingredients_list)  # Cleaner way to join ingredients
-    smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-    sf_df=st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
+    for fruit_chosen in ingredients_list:
+        ingredients_string += fruit_chosen + ' '
+        smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+        sf_df=st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
 
     # Check your table structure before adjusting the INSERT statement
     table_columns = [col.name for col in session.table("smoothies.public.orders").schema.fields]
